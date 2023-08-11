@@ -1,7 +1,19 @@
 chrome-driver:
-  location: C:\Users\PC\Desktop\chromedriver.exe
+  location: C:/Users/Administrator/Documents/crypto/chromedriver.exe
 
 spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
+
+logging:
+  file:
+    name: C:/Users/Administrator/Documents/crypto/crypto_api.log
+  logback:
+    rollingpolicy:
+      file-name-pattern:C:/Users/Administrator/Documents/crypto/crypto_api.%d{yyyy-MM-dd}.%i.log
+  level:
+    ir.NGCmsIot.FunctionModule: DEBUG
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n'
+    #console:

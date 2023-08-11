@@ -25,7 +25,7 @@ public class ApiService {
 static {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--remote-allow-origins=*");
-    System.setProperty("webdriver.chrome.driver", "C:\\Users\\PC\\Desktop\\chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Documents/crypto\\chromedriver.exe");
     driver = new ChromeDriver(options);
     driver.manage().window().minimize();
     driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);

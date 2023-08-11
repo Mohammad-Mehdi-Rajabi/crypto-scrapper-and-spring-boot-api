@@ -19,41 +19,41 @@ public class ApiController {
     @Autowired
     ApiService service;
 
-    @GetMapping("/MACDBearish")
+    @GetMapping("/divergences/MACDBearish")
     public ResponseEntity<?> MACDBearish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Divergences","macd_divergence_bearish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/MACDBullish")
+    @GetMapping("/divergences/MACDBullish")
     public ResponseEntity<?> MACDBullish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Divergences","macd_divergence_bullish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/RSIBullish")
+    @GetMapping("/divergences/RSIBullish")
     public ResponseEntity<?> RSIBullish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Divergences","rsi_divergence_bullish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/RSIBearish")
+    @GetMapping("/divergences/RSIBearish")
     public ResponseEntity<?> RSIBearish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Divergences","rsi_divergence_bearish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
-    @GetMapping("/goldenCross")
+    @GetMapping("/movingAverages/goldenCross")
     public ResponseEntity<?> goldenCross() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Moving Averages","golden_cross"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/trendLineSupport")
+    @GetMapping("/levels/trendLineSupport")
     public ResponseEntity<?> trendLineSupport() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Levels", "trendline_support"), HttpStatus.OK);
@@ -61,49 +61,49 @@ public class ApiController {
     }
 
 
-    @GetMapping("/doji")
+    @GetMapping("/candlesticks/doji")
     public ResponseEntity<?> doji() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Candlesticks", "doji"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/hammer")
+    @GetMapping("/candlesticks/hammer")
     public ResponseEntity<?> hammer() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Candlesticks", "hammer"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/spinningTop")
+    @GetMapping("/candlesticks/spinningTop")
     public ResponseEntity<?> spinningTop() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Candlesticks", "spinning_top"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/engulfingCandle")
-    public ResponseEntity<?> engulfingCandle() {
-        ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Candlesticks", "engulfing_candle"), HttpStatus.OK);
-        return generalResponseResponseEntity;
-    }
+//    @GetMapping("/candlesticks/engulfingCandle")
+//    public ResponseEntity<?> engulfingCandle() {
+//        ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
+//                new ResponseEntity<>(service.getAll("Candlesticks", "engulfing_candle_daily"), HttpStatus.OK);
+//        return generalResponseResponseEntity;
+//    }
+//
+//    @GetMapping("/candlesticks/insideCandle")
+//    public ResponseEntity<?> insideCandle() {
+//        ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
+//                new ResponseEntity<>(service.getAll("Candlesticks", "inside_day_daily"), HttpStatus.OK);
+//        return generalResponseResponseEntity;
+//    }
 
-    @GetMapping("/insideCandle")
-    public ResponseEntity<?> insideCandle() {
-        ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Candlesticks", "inside_candle"), HttpStatus.OK);
-        return generalResponseResponseEntity;
-    }
-
-    @GetMapping("/CCIBuyTrigger")
+    @GetMapping("/technicalIndicators/CCIBuyTrigger")
     public ResponseEntity<?> CCIBuyTrigger() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Technical Indicators", "cci_buy"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/CCISellTrigger")
+    @GetMapping("/technicalIndicators/CCISellTrigger")
     public ResponseEntity<?> CCISellTrigger() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Technical Indicators", "cci_sell"), HttpStatus.OK);
