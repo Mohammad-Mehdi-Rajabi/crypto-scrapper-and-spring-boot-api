@@ -1,4 +1,4 @@
-package cm.cryptoapiandscrapper.cryptoapi.security;
+package com.cryptoapiandscrapper.cryptoapi.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,5 +17,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
 
         http.csrf().disable();
+        http.cors().disable();
     }
 }

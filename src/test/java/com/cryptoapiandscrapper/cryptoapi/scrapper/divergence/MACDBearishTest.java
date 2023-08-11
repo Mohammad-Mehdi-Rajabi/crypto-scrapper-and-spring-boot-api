@@ -1,4 +1,4 @@
-package cm.cryptoapiandscrapper.cryptoapi.scrapper.divergence;
+package com.cryptoapiandscrapper.cryptoapi.scrapper.divergence;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package cm.cryptoapiandscrapper.cryptoapi.dto;
+package com.cryptoapiandscrapper.cryptoapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class RSIBearish implements Divergence {
+public class GeneralBody {
     private String rank;
     private String name;
     private String symbol;

@@ -1,4 +1,4 @@
-package cm.cryptoapiandscrapper.cryptoapi.dto;
+package com.cryptoapiandscrapper.cryptoapi.dto;
 
 
 import lombok.AllArgsConstructor;

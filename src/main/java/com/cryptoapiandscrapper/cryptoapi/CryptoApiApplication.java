@@ -1,4 +1,4 @@
-package cm.cryptoapiandscrapper.cryptoapi;
+package com.cryptoapiandscrapper.cryptoapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
