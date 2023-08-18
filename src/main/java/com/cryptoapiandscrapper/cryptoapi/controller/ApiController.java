@@ -22,34 +22,35 @@ public class ApiController {
     @GetMapping("/divergences/MACDBearish")
     public ResponseEntity<?> MACDBearish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Divergences","macd_divergence_bearish"), HttpStatus.OK);
+                new ResponseEntity<>(service.getAll("Divergences", "macd_divergence_bearish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
     @GetMapping("/divergences/MACDBullish")
     public ResponseEntity<?> MACDBullish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Divergences","macd_divergence_bullish"), HttpStatus.OK);
+                new ResponseEntity<>(service.getAll("Divergences", "macd_divergence_bullish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
     @GetMapping("/divergences/RSIBullish")
     public ResponseEntity<?> RSIBullish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Divergences","rsi_divergence_bullish"), HttpStatus.OK);
+                new ResponseEntity<>(service.getAll("Divergences", "rsi_divergence_bullish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
     @GetMapping("/divergences/RSIBearish")
     public ResponseEntity<?> RSIBearish() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Divergences","rsi_divergence_bearish"), HttpStatus.OK);
+                new ResponseEntity<>(service.getAll("Divergences", "rsi_divergence_bearish"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
+
     @GetMapping("/movingAverages/goldenCross")
     public ResponseEntity<?> goldenCross() {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
-                new ResponseEntity<>(service.getAll("Moving Averages","golden_cross"), HttpStatus.OK);
+                new ResponseEntity<>(service.getAll("Moving Averages", "golden_cross"), HttpStatus.OK);
         return generalResponseResponseEntity;
     }
 
@@ -108,5 +109,16 @@ public class ApiController {
         ResponseEntity<GeneralResponse<List<GeneralBody>>> generalResponseResponseEntity =
                 new ResponseEntity<>(service.getAll("Technical Indicators", "cci_sell"), HttpStatus.OK);
         return generalResponseResponseEntity;
+    }
+
+
+    @GetMapping("/firstList")
+    public ResponseEntity<?> firstList() {
+        return ResponseEntity.ok(service.firstList());
+    }
+
+    @GetMapping("/footerTable")
+    public ResponseEntity<?> footerTable() {
+        return ResponseEntity.ok(service.footerTable());
     }
 }
