@@ -32,6 +32,8 @@ public class ApiService {
 
     private static final String url = "https://tradytics.com/crypto-scan";
     private static final String url_footer = "https://www.cryptometer.io/whale-trades";
+    private static final int FOOTER_DELAY = 30000;
+    private static final int ALL_DELAY = 30000;
 
     static {
         ChromeOptions options = new ChromeOptions();
@@ -67,8 +69,7 @@ public class ApiService {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(480000);
-
+                    Thread.sleep(ALL_DELAY);
                     Map<String, GeneralResponse<List<GeneralBody>>> list = new ConcurrentHashMap<>();
                     list.put("firstList", firstList());
                     list.put("macd_divergence_bearish", getAll("Divergences", "macd_divergence_bearish"));
@@ -93,7 +94,7 @@ public class ApiService {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(60000);
+                    Thread.sleep(FOOTER_DELAY);
                     Map<String, GeneralResponse<List<FooterDto>>> ft = new ConcurrentHashMap<>();
                     ft.put("footerTable", footerTable());
                     footerMap = ft;
