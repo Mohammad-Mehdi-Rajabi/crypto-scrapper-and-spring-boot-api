@@ -71,29 +71,17 @@ public class ApiService {
 
                     Map<String, GeneralResponse<List<GeneralBody>>> list = new ConcurrentHashMap<>();
                     list.put("firstList", firstList());
-                    Thread.sleep(6000);
                     list.put("macd_divergence_bearish", getAll("Divergences", "macd_divergence_bearish"));
-                    Thread.sleep(6000);
                     list.put("rsi_divergence_bullish", getAll("Divergences", "rsi_divergence_bullish"));
-                    Thread.sleep(6000);
                     list.put("macd_divergence_bullish", getAll("Divergences", "macd_divergence_bullish"));
-                    Thread.sleep(6000);
                     list.put("rsi_divergence_bearish", getAll("Divergences", "rsi_divergence_bearish"));
-                    Thread.sleep(6000);
                     list.put("golden_cross", getAll("Moving Averages", "golden_cross"));
-                    Thread.sleep(6000);
                     list.put("trendline_support", getAll("Levels", "trendline_support"));
-                    Thread.sleep(6000);
                     list.put("doji", getAll("Candlesticks", "doji"));
-                    Thread.sleep(6000);
                     list.put("hammer", getAll("Candlesticks", "hammer"));
-                    Thread.sleep(6000);
                     list.put("spinning_top", getAll("Candlesticks", "spinning_top"));
-                    Thread.sleep(6000);
                     list.put("cci_buy", getAll("Technical Indicators", "cci_buy"));
-                    Thread.sleep(6000);
                     list.put("cci_sell", getAll("Technical Indicators", "cci_sell"));
-                    Thread.sleep(6000);
                     map = list;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -218,10 +206,10 @@ public class ApiService {
             }
 
 
-            log.info("method{}: {}", "getAll", "success");
+            log.info("method{}: {}", "firstList", "success");
             return new GeneralResponse<>(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), generalBodies);
         } catch (Exception e) {
-            log.info("method{}: {}", "getAll", "failed");
+            log.info("method{}: {}", "firstList", "failed");
             return new GeneralResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
         }
     }
