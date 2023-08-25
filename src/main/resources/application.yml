@@ -13,7 +13,7 @@ logging:
     rollingpolicy:
       file-name-pattern:C:/Users/Administrator/Documents/crypto/crypto_api.%d{yyyy-MM-dd}.%i.log
   level:
-    ir.NGCmsIot.FunctionModule: DEBUG
+    ir.NGCmsIot.FunctionModule: debug
   pattern:
     file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n'
     #console:

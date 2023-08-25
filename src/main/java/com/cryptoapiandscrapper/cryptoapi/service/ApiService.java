@@ -3,6 +3,7 @@ package com.cryptoapiandscrapper.cryptoapi.service;
 import com.cryptoapiandscrapper.cryptoapi.dto.FooterDto;
 import com.cryptoapiandscrapper.cryptoapi.dto.GeneralBody;
 import com.cryptoapiandscrapper.cryptoapi.dto.GeneralResponse;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,10 +13,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -24,6 +23,12 @@ public class ApiService {
 
     private static final WebDriver driver;
     private static final WebDriver driver1;
+    @Getter
+    private static Map<String, GeneralResponse<List<GeneralBody>>> map;
+
+    @Getter
+    private static Map<String, GeneralResponse<List<FooterDto>>> footerMap;
+
 
     private static final String url = "https://tradytics.com/crypto-scan";
     private static final String url_footer = "https://www.cryptometer.io/whale-trades";
@@ -31,6 +36,7 @@ public class ApiService {
     static {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        //C:\Users\Administrator\Documents\crypto\chromedriver.exe
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Documents\\crypto\\chromedriver.exe");
         driver = new ChromeDriver(options);
         driver.manage().window().minimize();
@@ -40,9 +46,77 @@ public class ApiService {
         driver1.manage().window().minimize();
         driver1.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
         driver1.get(url_footer);
+
+        map = new ConcurrentHashMap<>();
+        map.put("firstList", firstList());
+        map.put("macd_divergence_bearish", getAll("Divergences", "macd_divergence_bearish"));
+        map.put("rsi_divergence_bullish", getAll("Divergences", "rsi_divergence_bullish"));
+        map.put("macd_divergence_bullish", getAll("Divergences", "macd_divergence_bullish"));
+        map.put("rsi_divergence_bearish", getAll("Divergences", "rsi_divergence_bearish"));
+        map.put("golden_cross", getAll("Moving Averages", "golden_cross"));
+        map.put("trendline_support", getAll("Levels", "trendline_support"));
+        map.put("doji", getAll("Candlesticks", "doji"));
+        map.put("hammer", getAll("Candlesticks", "hammer"));
+        map.put("spinning_top", getAll("Candlesticks", "spinning_top"));
+        map.put("cci_buy", getAll("Technical Indicators", "cci_buy"));
+        map.put("cci_sell", getAll("Technical Indicators", "cci_sell"));
+        footerMap = new ConcurrentHashMap<>();
+        footerMap.put("footetTable", footerTable());
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(480000);
+
+                    Map<String, GeneralResponse<List<GeneralBody>>> list = new ConcurrentHashMap<>();
+                    list.put("firstList", firstList());
+                    Thread.sleep(6000);
+                    list.put("macd_divergence_bearish", getAll("Divergences", "macd_divergence_bearish"));
+                    Thread.sleep(6000);
+                    list.put("rsi_divergence_bullish", getAll("Divergences", "rsi_divergence_bullish"));
+                    Thread.sleep(6000);
+                    list.put("macd_divergence_bullish", getAll("Divergences", "macd_divergence_bullish"));
+                    Thread.sleep(6000);
+                    list.put("rsi_divergence_bearish", getAll("Divergences", "rsi_divergence_bearish"));
+                    Thread.sleep(6000);
+                    list.put("golden_cross", getAll("Moving Averages", "golden_cross"));
+                    Thread.sleep(6000);
+                    list.put("trendline_support", getAll("Levels", "trendline_support"));
+                    Thread.sleep(6000);
+                    list.put("doji", getAll("Candlesticks", "doji"));
+                    Thread.sleep(6000);
+                    list.put("hammer", getAll("Candlesticks", "hammer"));
+                    Thread.sleep(6000);
+                    list.put("spinning_top", getAll("Candlesticks", "spinning_top"));
+                    Thread.sleep(6000);
+                    list.put("cci_buy", getAll("Technical Indicators", "cci_buy"));
+                    Thread.sleep(6000);
+                    list.put("cci_sell", getAll("Technical Indicators", "cci_sell"));
+                    Thread.sleep(6000);
+                    map = list;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(60000);
+                    Map<String, GeneralResponse<List<FooterDto>>> ft = new ConcurrentHashMap<>();
+                    ft.put("footetTable", footerTable());
+                    footerMap = ft;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
-    public GeneralResponse<List<GeneralBody>> getAll(String tabName, String buttonName) {
+    public static GeneralResponse<List<GeneralBody>> getAll(String tabName, String buttonName) {
         log.info("method{} start for {} tab and {} option", "getAll", tabName, buttonName);
         try {
             List<WebElement> elements = driver.findElements(By.id("watchlist-filter-scany"));
@@ -122,7 +196,7 @@ public class ApiService {
         }
     }
 
-    public GeneralResponse<List<GeneralBody>> firstList() {
+    public static GeneralResponse<List<GeneralBody>> firstList() {
         log.info("method{} start", "firstList");
         try {
             List<WebElement> td = driver.findElements(By.tagName("td"));
@@ -152,7 +226,7 @@ public class ApiService {
         }
     }
 
-    public GeneralResponse<?> footerTable() {
+    public static GeneralResponse<List<FooterDto>> footerTable() {
         log.info("method{} start", "footerTable");
         try {
             List<WebElement> td = driver1.findElements(By.id("coinList"));
