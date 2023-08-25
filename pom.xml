@@ -10,7 +10,7 @@
     </parent>
     <groupId>cm.cryptoapiandscrapper</groupId>
     <artifactId>crypto-api</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <name>crypto-api</name>
     <description>crypto api and web scrapper</description>
     <properties>
