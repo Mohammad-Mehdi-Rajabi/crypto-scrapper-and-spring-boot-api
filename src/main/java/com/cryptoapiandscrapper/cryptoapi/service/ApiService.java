@@ -107,7 +107,7 @@ public class ApiService {
                 try {
                     Thread.sleep(60000);
                     Map<String, GeneralResponse<List<FooterDto>>> ft = new ConcurrentHashMap<>();
-                    ft.put("footetTable", footerTable());
+                    ft.put("footerTable", footerTable());
                     footerMap = ft;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
